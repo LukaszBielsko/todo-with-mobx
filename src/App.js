@@ -17,7 +17,7 @@ class TodoList {
 
 // make below properties observable
 decorate(Todo, { title: observable });
-decorate(TodoList, { todolist: observable, list: computed });
+decorate(TodoList, { todolist: observable });
 
 // make below an obsever
 const ShowTodoList = observer(
@@ -36,5 +36,13 @@ class App extends Component {
     return <ShowTodoList todolist={store.todolist} />;
   }
 }
+
+/*
+  assign store go global variable store
+  when below is entered in the console  
+  store.list.push({title: 'do sth else'})
+  new todo item will be rendered to the screen
+*/
+window.store = store;
 
 export default App;
